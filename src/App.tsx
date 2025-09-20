@@ -9,10 +9,9 @@ function App() {
       <PathfindingProvider>
         <TileProvider>
           <SpeedProvider>
-            <div className="h-screen w-screen flex flex-col bg-amber-400">
+            <div className="h-screen w-screen flex flex-col bg-gray-950">
               <Grid />
             </div>
-            <Grid />
           </SpeedProvider>
         </TileProvider>
       </PathfindingProvider>
