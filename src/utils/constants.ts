@@ -1,3 +1,5 @@
+import type { MazeSelectType } from "./Types";
+
 export const MAX_ROWS = 39;
 export const MAX_COLS = 49;
 
@@ -31,3 +33,9 @@ export const START_TILE_STYLE = TILE_STYLE + " bg-green-500";
 export const END_TILE_STYLE = TILE_STYLE + " bg-red-600";
 export const WALL_TILE_STYLE = TILE_STYLE + " bg-gray-200";
 export const PATH_TILE_STYLE = TILE_STYLE + " bg-green-600";
+
+export const MAZES: MazeSelectType[] = [
+  {name:"None",value:"none"},
+  {name:"Binary Tree",value:"binary_tree"},
+  {name:"Recursive Division",value:"recursive_division"}
+];
