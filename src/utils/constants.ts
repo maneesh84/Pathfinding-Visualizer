@@ -1,4 +1,5 @@
-import type { MazeSelectType } from "./Types";
+import { ssrExportAllKey } from "vite/module-runner";
+import type { MazeSelectType, selectSpeedType } from "./Types";
 
 export const MAX_ROWS = 39;
 export const MAX_COLS = 49;
@@ -35,7 +36,13 @@ export const WALL_TILE_STYLE = TILE_STYLE + " bg-gray-200";
 export const PATH_TILE_STYLE = TILE_STYLE + " bg-green-600";
 
 export const MAZES: MazeSelectType[] = [
-  {name:"None",value:"none"},
-  {name:"Binary Tree",value:"binary_tree"},
-  {name:"Recursive Division",value:"recursive_division"}
+  { name: "None", value: "none" },
+  { name: "Binary Tree", value: "binary_tree" },
+  { name: "Recursive Division", value: "recursive_division" },
+];
+
+export const SPEEDS: selectSpeedType[] = [
+  { name: "slow", value: 2 },
+  { name: "medium", value: 1 },
+  { name: "fast", value: 0.5 },
 ];

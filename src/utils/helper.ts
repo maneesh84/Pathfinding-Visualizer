@@ -34,11 +34,15 @@ export const checkIfStartOrEnd = (row: number, col: number) => {
 };
 
 export const createNewGrid = (grid: GridType, row: number, col: number) => {
-  const newGrid =grid.slice();
-  const newTile ={
+  const newGrid = grid.slice();
+  const newTile = {
     ...newGrid[row][col],
-    isWall: !newGrid[row][col].isWall
+    isWall: !newGrid[row][col].isWall,
   };
-  newGrid[row][col]=newTile;
+  newGrid[row][col] = newTile;
   return newGrid;
+};
+
+export const isEqual = (a: TileType, b: TileType) => {
+  return a.row === b.row && a.col === b.col;
 };
