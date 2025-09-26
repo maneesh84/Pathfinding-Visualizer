@@ -1,1 +1,19 @@
+/* input.css or app.css */
+
 @import "tailwindcss";
+
+@theme {
+  /* 1. Define the custom animation utility (--animate-wall) */
+  --animate-wall: wall-bounce 0.5s ease-in-out 1;
+
+  /* 2. Define the keyframes referenced by the animation utility */
+  @keyframes wall-bounce {
+    0%,
+    100% {
+      transform: scale(0.7); /* Shrink at start/end */
+    }
+    50% {
+      transform: scale(1.2); /* Expand mid-way */
+    }
+  }
+}

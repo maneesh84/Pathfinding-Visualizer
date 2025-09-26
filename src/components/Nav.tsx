@@ -1,15 +1,18 @@
-import { useState, type ChangeEvent } from "react";
+import { useState } from "react";
 import { usePathFinding } from "../Hooks/usePathFinding";
 import { MAZES } from "../utils/constants";
 import { Select } from "./Select";
 import type { MazeType } from "../utils/Types";
 import { ResetGrid } from "../utils/ResetGrid";
 import { useTile } from "../Hooks/useTile";
+import { runMazeAlgorithm } from "../utils/runMazeAlgo";
+import { useSpeed } from "../Hooks/useSpeed";
 
 export function Nav() {
   const { maze, setMaze, grid } = usePathFinding();
   const { startTile, endTile } = useTile();
   const [isDisabled, setIsDisabled] = useState(false);
+  const { speed } = useSpeed();
 
   const handleGenerateMaze = (maze: MazeType) => {
     if (maze === "none") {
@@ -20,7 +23,14 @@ export function Nav() {
 
     setMaze(maze);
     setIsDisabled(true);
-    //runMazeAlgo
+    runMazeAlgorithm({
+      maze,
+      grid,
+      startTile,
+      endTile,
+      setIsDisabled,
+      speed,
+    });
   };
 
   return (
