@@ -12,7 +12,7 @@ function App() {
       <PathfindingProvider>
         <TileProvider>
           <SpeedProvider>
-            <div className="h-screen w-screen flex flex-col ">
+            <div className=" flex flex-col bg-gray-500">
               <Nav />
               <Grid isVisualizationRunningRef={isVisualizationRunningRef} />
             </div>

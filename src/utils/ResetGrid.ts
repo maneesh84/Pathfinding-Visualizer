@@ -10,8 +10,8 @@ import type { GridType, TileType } from "./Types";
 
 export const ResetGrid = ({
   grid,
-  startTile = START_TILE_CONFIGURATION,
-  endTile = END_TILE_CONFIGURATION,
+  startTile=START_TILE_CONFIGURATION,
+  endTile=END_TILE_CONFIGURATION,
 }: {
   grid: GridType;
   startTile?: TileType;

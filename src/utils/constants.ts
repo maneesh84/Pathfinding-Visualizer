@@ -1,5 +1,9 @@
 import { ssrExportAllKey } from "vite/module-runner";
-import type { MazeSelectType, selectSpeedType } from "./Types";
+import type {
+  AlgorithmSelectType,
+  MazeSelectType,
+  selectSpeedType,
+} from "./Types";
 
 export const MAX_ROWS = 39;
 export const MAX_COLS = 49;
@@ -32,13 +36,20 @@ export const TILE_STYLE =
 export const TRAVERSED_TILE_STYLE = TILE_STYLE + " bg-cyan-500";
 export const START_TILE_STYLE = TILE_STYLE + " bg-green-500";
 export const END_TILE_STYLE = TILE_STYLE + " bg-red-600";
-export const WALL_TILE_STYLE = TILE_STYLE + " bg-gray-200";
+export const WALL_TILE_STYLE = TILE_STYLE + " bg-gray-700";
 export const PATH_TILE_STYLE = TILE_STYLE + " bg-green-600";
 
 export const MAZES: MazeSelectType[] = [
   { name: "None", value: "none" },
   { name: "Binary Tree", value: "binary_tree" },
   { name: "Recursive Division", value: "recursive_division" },
+];
+
+export const ALGORITHMS: AlgorithmSelectType[] = [
+  { name: "Dijkstra", value: "dijkstra" },
+  { name: "A-Star", value: "aStar" },
+  { name: "BFS", value: "bfs" },
+  { name: "DFS", value: "dfs" },
 ];
 
 export const SPEEDS: selectSpeedType[] = [

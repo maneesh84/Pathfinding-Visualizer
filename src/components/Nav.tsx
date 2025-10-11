@@ -1,15 +1,26 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { usePathFinding } from "../Hooks/usePathFinding";
-import { MAZES } from "../utils/constants";
+import { ALGORITHMS, MAZES } from "../utils/constants";
 import { Select } from "./Select";
-import type { MazeType } from "../utils/Types";
+import type { AlgorithmType, MazeType } from "../utils/Types";
 import { ResetGrid } from "../utils/ResetGrid";
 import { useTile } from "../Hooks/useTile";
 import { runMazeAlgorithm } from "../utils/runMazeAlgo";
 import { useSpeed } from "../Hooks/useSpeed";
+import { PlayButton } from "./PlayButton";
+
 
 export function Nav() {
-  const { maze, setMaze, grid } = usePathFinding();
+  const {
+    maze,
+    setMaze,
+    grid,
+    setGrid,
+    isGraphVisualized,
+    setIsGraphVisualized,
+    algorithm,
+    setAlgorithm,
+  } = usePathFinding();
   const { startTile, endTile } = useTile();
   const [isDisabled, setIsDisabled] = useState(false);
   const { speed } = useSpeed();
@@ -31,7 +42,21 @@ export function Nav() {
       setIsDisabled,
       speed,
     });
+
+    const newGrid = grid.slice();
+    setGrid(newGrid);
+    setIsGraphVisualized(false);
   };
+
+  const handlerRunVisualizer=()=>{
+    if(isGraphVisualized){
+      setIsGraphVisualized(false);
+      ResetGrid({ grid: grid.slice(), startTile, endTile });
+      return;
+    }
+
+    //run the algorithm
+  }
 
   return (
     <div className="flex items-center justify-center min-h-[4.5rem] border-b shadow-gray-600 sm:px-5 px-0">
@@ -48,6 +73,19 @@ export function Nav() {
             onChange={(e) => {
               handleGenerateMaze(e.target.value as MazeType);
             }}
+          />
+          <Select
+            label="Algorithms"
+            value={algorithm}
+            option={ALGORITHMS}
+            onChange={(e) => {
+              setAlgorithm(e.target.value as AlgorithmType);
+            }}
+          ></Select>
+          <PlayButton
+            isDisabled={isDisabled}
+            isGraphVisualized={isGraphVisualized}
+            handlerRunVisualizer={handlerRunVisualizer}
           />
         </div>
       </div>

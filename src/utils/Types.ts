@@ -1,5 +1,10 @@
 export type AlgorithmType = "dijkstra" | "bfs" | "dfs" | "aStar";
 
+export interface AlgorithmSelectType {
+  name: string;
+  value: AlgorithmType;
+}
+
 export type MazeType = "none" | "binary_tree" | "recursive_division";
 
 export interface MazeSelectType {
@@ -23,8 +28,7 @@ export type GridType = TileType[][];
 
 export type SpeedType = 2 | 1 | 0.5;
 
-export interface selectSpeedType{
-  name:string,
-  value:SpeedType,
+export interface selectSpeedType {
+  name: string;
+  value: SpeedType;
 }
-
