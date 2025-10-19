@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { usePathFinding } from "../Hooks/usePathFinding";
 import { ALGORITHMS, MAZES } from "../utils/constants";
 import { Select } from "./Select";
@@ -8,7 +8,8 @@ import { useTile } from "../Hooks/useTile";
 import { runMazeAlgorithm } from "../utils/runMazeAlgo";
 import { useSpeed } from "../Hooks/useSpeed";
 import { PlayButton } from "./PlayButton";
-
+import { runPathFindingAlgorithm } from "../utils/runPathFindingAlgorithm";
+import { animatePath } from "../utils/animatePath";
 
 export function Nav() {
   const {
@@ -48,15 +49,24 @@ export function Nav() {
     setIsGraphVisualized(false);
   };
 
-  const handlerRunVisualizer=()=>{
-    if(isGraphVisualized){
+  const handlerRunVisualizer = () => {
+    if (isGraphVisualized) {
       setIsGraphVisualized(false);
       ResetGrid({ grid: grid.slice(), startTile, endTile });
       return;
     }
 
-    //run the algorithm
-  }
+    const { traversedTiles, path } = runPathFindingAlgorithm({
+      algorithm,
+      grid,
+      startTile,
+      endTile,
+    });
+
+    console.log("traversedTiles", traversedTiles);
+    console.log("path", path);
+    animatePath(traversedTiles, path, startTile, endTile, speed);
+  };
 
   return (
     <div className="flex items-center justify-center min-h-[4.5rem] border-b shadow-gray-600 sm:px-5 px-0">

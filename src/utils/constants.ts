@@ -1,4 +1,3 @@
-import { ssrExportAllKey } from "vite/module-runner";
 import type {
   AlgorithmSelectType,
   MazeSelectType,
@@ -57,3 +56,6 @@ export const SPEEDS: selectSpeedType[] = [
   { name: "medium", value: 1 },
   { name: "fast", value: 0.5 },
 ];
+
+export const SLEEP_TIME = 8;
+export const EXTENDED_SLEEP_TIME = 30;

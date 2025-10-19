@@ -1,19 +1,67 @@
-/* input.css or app.css */
-
+/* 1. Import Tailwind's core styles */
 @import "tailwindcss";
 
-@theme {
-  /* 1. Define the custom animation utility (--animate-wall) */
-  --animate-wall: wall-bounce 0.5s ease-in-out 1;
-
-  /* 2. Define the keyframes referenced by the animation utility */
-  @keyframes wall-bounce {
-    0%,
-    100% {
-      transform: scale(0.7); /* Shrink at start/end */
-    }
-    50% {
-      transform: scale(1.2); /* Expand mid-way */
-    }
+/* 2. Add your custom keyframes (converted from JS to CSS) */
+@keyframes traversed {
+  0% {
+    transform: scale(0.3);
+    background-color: #9333eabf;
+    border-radius: 100%;
   }
+  50% {
+    background-color: #4f46e5bf;
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: #3b82f6bf;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #22d3ee;
+  }
+}
+
+@keyframes path {
+  0% {
+    transform: scale(0.3);
+    background-color: #e11d48bf;
+    border-radius: 100%;
+  }
+  50% {
+    background-color: #ea580cbf;
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: #fb923cbf;
+  }
+  90% {
+    transform: scale(0.8);
+    background-color: #fde68a;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wall {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 3. Manually create utility classes to apply the animations */
+/* (This is what Tailwind's 'animation' config does for you) */
+.animate-traversed {
+  animation: traversed 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.animate-path {
+  animation: path 1.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.animate-wall {
+  animation: wall 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
